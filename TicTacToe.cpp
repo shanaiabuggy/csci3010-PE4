@@ -17,6 +17,29 @@ void DisplayBoard(char * board) {
   }
 }
 
+struct Point {
+  Point(int xVal, int yVal) {
+    x = xVal;
+    y = yVal;
+  }
+  int x;
+  int y;
+};
+
+Point GetPlayerChoice() {
+  std::cout << "Enter a row (0-2):" << std::endl;
+  int x;
+  std::cin >> x;
+  int y;
+  std::cout << "Enter a col (0-2):" << std::endl;
+  std::cin >> y;
+
+  return Point(x, y);
+}
+
+void PlaceMarker(Point p, char * board, char player) {
+  board[p.x + 3*p.y] = player;
+
 std::pair<int,int> GetPlayerChoice() {
   std::pair<int,int> location;
   int row;
