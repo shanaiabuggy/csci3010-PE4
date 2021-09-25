@@ -1,6 +1,5 @@
 #include <iostream>
 
-
 char * CreateBoard() {
   char *ptr;
   char board[3][3];
@@ -40,11 +39,22 @@ Point GetPlayerChoice() {
 
 void PlaceMarker(Point p, char * board, char player) {
   board[p.x + 3*p.y] = player;
+
+std::pair<int,int> GetPlayerChoice() {
+  std::pair<int,int> location;
+  int row;
+  int col;
+  std::cout << "Enter the row of your move: ";
+  std::cin >> row;
+  std::cout << "Enter the column of your move: ";
+  std::cin >> col;
+  return std::make_pair(row, col);
 }
 
 int main(){
   char *b;
   b = CreateBoard();
   DisplayBoard(b);
+  std::pair move = GetPlayerChoice();
   return 0;
 }
