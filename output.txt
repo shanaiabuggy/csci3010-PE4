@@ -1,0 +1,51 @@
+_ _ _
+_ _ _
+_ _ _
+Player X turn
+Enter a row (0-2):
+0
+Enter a col (0-2):
+0
+X _ _
+_ _ _
+_ _ _
+Player O turn
+Enter a row (0-2):
+2
+Enter a col (0-2):
+1
+X _ _
+_ _ _
+_ O _
+Player X turn
+Enter a row (0-2):
+1
+Enter a col (0-2):
+1
+X _ _
+_ X _
+_ O _
+Player O turn
+Enter a row (0-2):
+2
+Enter a col (0-2):
+0
+X _ _
+_ X _
+O O _
+Player X turn
+Enter a row (0-2):
+2
+Enter a col (0-2):
+2
+X _ _
+_ X _
+O O X
+Player O turn
+Enter a row (0-2):
+0
+Enter a col (0-2):
+1
+X O _
+_ X _
+O O X
