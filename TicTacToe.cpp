@@ -51,7 +51,7 @@ int main(){
   Point p = Point(0,0);
   //b = CreateBoard();
 
-  for (int i = 0; i < 9; i++){
+  for (int i = 0; i < 4; i++){
     // for X
     DisplayBoard(board);
     std::cout<< "Player X turn" << std::endl;
@@ -63,5 +63,12 @@ int main(){
     p = GetPlayerChoice();
     PlaceMarker(p, board, 'O');
   }
+  // for X
+  DisplayBoard(board);
+  std::cout<< "Player X turn" << std::endl;
+  p = GetPlayerChoice();
+  PlaceMarker(p, board, 'X');
+  DisplayBoard(board);
+  std::cout << "Game over!" << std::endl;
   return 0;
 }
