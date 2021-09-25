@@ -7,9 +7,18 @@ int * CreateBoard() {
   return ptr;
 }
 
+void DisplayBoard(int *b){
+  for (int i = 0; i < 3; i++){
+    for (int j = 0; j < 3; j++){
+      std::cout << b[(i*3)+j];
+    }
+    std::cout<<std::endl;
+  }
+}
+
 int main(){
   int *b;
   b = CreateBoard();
-
+  DisplayBoard(b);
   return 0;
 }
