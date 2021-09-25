@@ -2,7 +2,7 @@
 
 char * CreateBoard() {
   char *ptr;
-  char board[3][3];
+  char board[3][3] = {{'_'}};
   ptr =  &board[3][3];
   return ptr;
 }
@@ -26,6 +26,7 @@ struct Point {
   int y;
 };
 
+
 Point GetPlayerChoice() {
   std::cout << "Enter a row (0-2):" << std::endl;
   int x;
@@ -37,9 +38,11 @@ Point GetPlayerChoice() {
   return Point(x, y);
 }
 
-void PlaceMarker(Point p, char * board, char player) {
-  board[p.x + 3*p.y] = player;
 
+void PlaceMarker(Point p, char * board, char player) {
+  board[p.x*3 + p.y] = player;
+}
+/*
 std::pair<int,int> GetPlayerChoice() {
   std::pair<int,int> location;
   int row;
@@ -49,12 +52,23 @@ std::pair<int,int> GetPlayerChoice() {
   std::cout << "Enter the column of your move: ";
   std::cin >> col;
   return std::make_pair(row, col);
-}
+}*/
 
 int main(){
   char *b;
+  Point p = Point(0,0);
   b = CreateBoard();
-  DisplayBoard(b);
-  std::pair move = GetPlayerChoice();
+  for (int i = 0; i < 9; i++){
+    // for X
+    std::cout<< "Player X turn" << std::endl;
+    DisplayBoard(b);
+    p = GetPlayerChoice();
+    PlaceMarker(p, b, 'X');
+    // for O
+    std::cout<< "Player O turn" << std::endl;
+    DisplayBoard(b);
+    p = GetPlayerChoice();
+    PlaceMarker(p, b, 'O');
+  }
   return 0;
 }
