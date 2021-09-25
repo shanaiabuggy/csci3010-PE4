@@ -1,19 +1,22 @@
 #include <iostream>
 
-char * CreateBoard() {
-  char *ptr;
-  char board[3][3] = {{'_'}};
-  ptr =  &board[3][3];
-  return ptr;
+char** CreateBoard() {
+  char** board = new char*[3];
+  for(int i = 0; i < 3; i++){
+    board[i] = new char[3];
+    for(int j = 0; j < 3; j++){
+      board[i][j] = '_';
+    }
+  }
+  return board;
 }
 
-void DisplayBoard(char * board) {
-  for(int i = 0; i < 3; i++) {
-    std::string line = "";
-    line += std::to_string(board[i*3]) + " ";
-    line += std::to_string(board[i*3 + 1]) + " ";
-    line += std::to_string(board[i*3 + 2]);
-    std::cout << line << std::endl;
+void DisplayBoard(char** board) {
+  for(int i = 0; i < 3; i++){
+    for(int j = 0; j < 3; j++){
+      std::cout << board[i][j] << " ";
+    }
+    std::cout << std::endl;
   }
 }
 
@@ -39,36 +42,26 @@ Point GetPlayerChoice() {
 }
 
 
-void PlaceMarker(Point p, char * board, char player) {
-  board[p.x*3 + p.y] = player;
+void PlaceMarker(Point p, char** board, char player) {
+  board[p.x][p.y] = player;
 }
-/*
-std::pair<int,int> GetPlayerChoice() {
-  std::pair<int,int> location;
-  int row;
-  int col;
-  std::cout << "Enter the row of your move: ";
-  std::cin >> row;
-  std::cout << "Enter the column of your move: ";
-  std::cin >> col;
-  return std::make_pair(row, col);
-}*/
 
 int main(){
-  char *b;
+  char** board = CreateBoard();
   Point p = Point(0,0);
-  b = CreateBoard();
+  //b = CreateBoard();
+
   for (int i = 0; i < 9; i++){
     // for X
+    DisplayBoard(board);
     std::cout<< "Player X turn" << std::endl;
-    DisplayBoard(b);
     p = GetPlayerChoice();
-    PlaceMarker(p, b, 'X');
+    PlaceMarker(p, board, 'X');
     // for O
+    DisplayBoard(board);
     std::cout<< "Player O turn" << std::endl;
-    DisplayBoard(b);
     p = GetPlayerChoice();
-    PlaceMarker(p, b, 'O');
+    PlaceMarker(p, board, 'O');
   }
   return 0;
 }
